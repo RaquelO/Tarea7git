@@ -1,0 +1,22 @@
+name: Prueba de Tokens
+
+on:
+  push:
+
+jobs:
+  comparar_tokens:
+    runs-on: self-hosted
+    env:
+      LOCAL_DEV_TOKEN: "secret1"
+
+    steps:
+      - name: Comparar Secret y Variable Local
+        shell: powershell
+        env:
+          DEV_TOKEN: ${{ secrets.DEV_TOKEN }}
+        run: |
+          if [ "$DEV_TOKEN" = "$LOCAL_DEV_TOKEN" ]; then
+            echo "✅ Los tokens coinciden."
+          else
+            echo "❌ Los tokens NO coinciden o uno de ellos está vacío."
+          fi
