@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Comparar Secret y Variable Local
-        shell: powershell
+        shell: bash
         env:
           DEV_TOKEN: ${{ secrets.DEV_TOKEN }}
         run: |
